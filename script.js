@@ -150,3 +150,62 @@ function toggleMenu() {
         gsap.to(spans, { rotation: 0, y: 0, duration: 0.3 });
     }
 }
+
+// Consultation Modal Logic
+const modal = document.getElementById('consultation-modal');
+// Select all buttons that should open the modal (Book Consultation buttons)
+const consultationBtns = document.querySelectorAll('a[href="#contact"]'); // Targeting existing buttons
+
+consultationBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent scroll to #contact
+        openModal();
+    });
+});
+
+function openModal() {
+    modal.classList.add('active');
+    // Optional: Stop Lenis scroll if desired, but overlay handles pointers
+    // lenis.stop();
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+    // lenis.start();
+}
+
+// Close on outside click
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+function submitConsultation(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('customer-name').value;
+    const contact = document.getElementById('contact-number').value;
+    const requirement = document.getElementById('requirement').value;
+
+    // Format message for WhatsApp
+    const message = `*New Consultation Request*%0a%0a*Name:* ${name}%0a*Contact:* ${contact}%0a*Requirement:* ${requirement}`;
+    const whatsappUrl = `https://wa.me/917207478600?text=${message}`;
+
+    // Format for Email
+    const emailSubject = "New Consultation Request";
+    const emailBody = `Name: ${name}%0D%0AContact: ${contact}%0D%0ARequirement: ${requirement}`;
+    const mailtoUrl = `mailto:ikramali7@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`;
+
+    // Open WhatsApp (New Tab)
+    window.open(whatsappUrl, '_blank');
+
+    // Trigger Email (Default Client) - Small delay to allow browser to process both
+    setTimeout(() => {
+        window.location.href = mailtoUrl;
+    }, 500);
+
+    // Close modal and reset form
+    closeModal();
+    document.getElementById('consultation-form').reset();
+}

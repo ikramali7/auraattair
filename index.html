@@ -114,22 +114,23 @@
                 <!-- Extracted/Generated Image Gallery -->
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="assets/lehenga.png" alt="Bridal Couture">
+                        <img src="assets/collection_1.jpg" alt="Bridal Couture">
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/saree.png" alt="Silk Heritage">
+                        <img src="assets/collection_2.jpg" alt="Silk Heritage">
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/ethnic.png" alt="Detailing">
+                        <img src="assets/collection_3.jpg" alt="Detailing">
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/modern.png" alt="Modern Cut">
+                        <img src="assets/collection_4.jpg" alt="Modern Cut">
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/fusion.png" alt="Fusion Drape">
+                        <img src="assets/collection_5.jpg" alt="Fusion Drape">
                     </div>
+                    <!-- Replaced duplicate with new image -->
                     <div class="gallery-item">
-                        <img src="assets/lehenga.png" alt="Signature Look"> <!-- Duplicate for grid balance -->
+                        <img src="assets/collection_6.jpg" alt="Signature Look">
                     </div>
                 </div>
             </section>
@@ -144,8 +145,8 @@
                         <a href="#contact" class="btn-outline">Book Consultation</a>
                     </div>
                     <div class="fit-visual">
-                        <!-- Abstract shape or minimal graphic via CSS -->
-                        <div class="circle-graphic"></div>
+                        <!-- Replaced circle graphic with Indian Traditional Attire image -->
+                        <img src="assets/hero_fusion.jpg" alt="Indian Traditional Attire" class="fit-image">
                     </div>
                 </div>
             </section>
@@ -170,6 +171,27 @@
 
         </div> <!-- /smooth-content -->
     </div> <!-- /smooth-wrapper -->
+
+    <!-- Consultation Modal -->
+    <div class="modal-overlay" id="consultation-modal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title">Book Consultation</h3>
+            <p class="modal-subtitle">We will craft your perfect fit.</p>
+            <form id="consultation-form" onsubmit="submitConsultation(event)">
+                <div class="form-group">
+                    <input type="text" id="customer-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="contact-number" placeholder="Contact Number" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="requirement" placeholder="Your Requirement / Vision" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-gold">Submit Request</button>
+            </form>
+        </div>
+    </div>
 
     <!-- GSAP Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
