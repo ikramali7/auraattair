@@ -1,0 +1,638 @@
+:root {
+    --color-bg: #0a0a0a;
+    /* Deep Charcoal/Black */
+    --color-text: #f0f0f0;
+    --color-gold: #D4AF37;
+    --color-gold-muted: #aa8c2c;
+    --color-glass: rgba(255, 255, 255, 0.05);
+
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    --spacing-sm: 2rem;
+    --spacing-md: 5rem;
+    --spacing-lg: 10rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    opacity: 0;
+    /* JS will fade in */
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-bg);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.logo-text {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: var(--color-gold);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Header */
+.glass-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 4rem;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.glass-header.scrolled {
+    padding: 1rem 4rem;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.brand {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    opacity: 0.7;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: var(--color-gold);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--color-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.mobile-toggle {
+    display: none;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    /* Extra height for parallax */
+    z-index: -1;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Hero always covers */
+    opacity: 0.6;
+    /* Darken for text readability */
+}
+
+/* ... existing styles ... */
+
+.img-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* NO CROPPING for Collection: Show full video */
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.hero-overlay {
+    text-align: center;
+    z-index: 1;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-size: 6vw;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: var(--color-gold);
+    overflow: hidden;
+    /* For text reveal animation */
+}
+
+.hero-title .line {
+    display: block;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
+
+.btn-gold {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.4s ease;
+}
+
+.btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--color-gold);
+    z-index: -1;
+    transition: width 0.4s ease;
+}
+
+.btn-gold:hover {
+    color: var(--color-bg);
+}
+
+.btn-gold:hover::before {
+    width: 100%;
+}
+
+/* Editorial */
+.editorial-section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    text-align: center;
+}
+
+.editorial-text {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Collections Grid - Full Screen Split */
+.collections-section {
+    padding: 0;
+    /* Remove container padding for full bleed */
+}
+
+/* Ensure header has padding since container lost it */
+.section-header {
+    text-align: center;
+    padding: var(--spacing-md) 0 3rem;
+    background: var(--color-bg);
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-gold);
+}
+
+.separator {
+    width: 1px;
+    height: 60px;
+    background: var(--color-gold);
+    margin: 0 auto;
+}
+
+/* Full Bleed Stacked Grid - 1 Column */
+.masonry-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    /* Single Column */
+    gap: 0;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+    background: #000;
+}
+
+.collection-item {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full Height */
+    overflow: hidden;
+    cursor: pointer;
+    background: #000;
+}
+
+/* Remove old specific item classes if they exist, but we just want general styling */
+.collection-item.item-1,
+.collection-item.item-2,
+.collection-item.item-3,
+.collection-item.item-4,
+.collection-item.item-5 {
+    grid-column: auto;
+    margin-top: 0;
+    height: 100%;
+}
+
+.img-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* NO CROPPING: Show full video */
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+
+.collection-item:hover .img-container video {
+    transform: scale(1.02);
+}
+
+/* Gallery Grid for Images */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+    margin-top: 0;
+}
+
+.gallery-item {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 100%;
+    }
+
+    .gallery-item {
+        height: 60vh;
+    }
+}
+
+/* Text Overlay handling */
+.collection-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.collection-item:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay h3 {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+}
+
+.overlay p {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+
+/* Custom Fit */
+.custom-fit-section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    position: relative;
+}
+
+.fit-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.fit-content {
+    flex: 1;
+    padding-right: 4rem;
+}
+
+.fit-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+}
+
+.fit-visual {
+    flex: 1;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-graphic {
+    width: 300px;
+    height: 300px;
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    position: relative;
+}
+
+.circle-graphic::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--color-gold-muted) 0%, transparent 70%);
+    opacity: 0.3;
+    filter: blur(40px);
+}
+
+
+/* Footer */
+.site-footer {
+    padding: var(--spacing-md) 4rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+}
+
+.footer-brand h2 {
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.footer-links a {
+    display: block;
+    text-align: right;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.4;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .editorial-text {
+        font-size: 2rem;
+    }
+
+    .masonry-grid {
+        grid-template-columns: 100%;
+        gap: 0;
+    }
+
+    .collection-item {
+        height: 60vh;
+        /* Shorter on mobile */
+    }
+
+    .fit-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .fit-content {
+        padding-right: 0;
+        margin-bottom: 4rem;
+    }
+
+    .glass-header {
+        padding: 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+        /* In a real app, implement hamburger menu */
+    }
+
+    .mobile-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 200;
+        /* Above overlay */
+    }
+
+    .mobile-toggle span {
+        width: 30px;
+        height: 2px;
+        background: var(--color-gold);
+        transition: all 0.3s ease;
+    }
+
+    /* Animation for hamburger to X */
+    body.nav-open .mobile-toggle span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    body.nav-open .mobile-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    body.nav-open .mobile-toggle span:nth-child(3) {
+        /* Need to add 3rd span in HTML or just use pseudo elements */
+        /* The HTML has only 2 spans currently line 33-34. I'll adjust to 2 spans X or add 3rd span in HTML. 
+            Let's stick to 2 bars for a minimal look or rotate them. 
+            Actually, let's just rotate the two. */
+        display: none;
+    }
+}
+
+/* Mobile Menu Overlay - Outside media query to be available */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-bg);
+    z-index: 150;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobile-menu-links {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-menu-links li {
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.mobile-menu-links a {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--color-text);
+    display: block;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.mobile-menu-overlay.active .mobile-menu-links a {
+    transform: translateY(0);
+}
+
+.mobile-menu-links a:hover {
+    color: var(--color-gold);
+}

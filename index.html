@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura & Attire | Bespoke Fashion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="loading">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="logo-text">Aura & Attire</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-header">
+        <div class="nav-container">
+            <a href="#" class="brand">Aura & Attire</a>
+            <ul class="nav-links">
+                <li><a href="#hero">The Atelier</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#custom-fit">Custom Fit</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <ul class="mobile-menu-links">
+            <li><a href="#hero" onclick="toggleMenu()">The Atelier</a></li>
+            <li><a href="#collections" onclick="toggleMenu()">Collections</a></li>
+            <li><a href="#custom-fit" onclick="toggleMenu()">Custom Fit</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Smooth Scroll Wrapper -->
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <!-- Hero Section -->
+            <section id="hero" class="hero-section" data-speed="0.5">
+                <div class="hero-bg-container">
+                    <img src="assets/hero.png" alt="Luxury Silk Drapery" class="hero-bg">
+                </div>
+                <div class="hero-overlay">
+                    <h1 class="hero-title">
+                        <span class="line reveal-text">Your Silhouette,</span>
+                        <span class="line reveal-text">Our Canvas.</span>
+                    </h1>
+                    <p class="hero-subtitle reveal-text">The Art of Bespoke Tailoring</p>
+                    <a href="#collections" class="btn-gold reveal-text">Explore Canvases</a>
+                </div>
+            </section>
+
+            <!-- Editorial Statement -->
+            <section class="editorial-section">
+                <div class="container">
+                    <p class="editorial-text" data-speed="0.8">
+                        "Fashion is not just what you wear. It is the aura you project using the attire we craft."
+                    </p>
+                </div>
+            </section>
+
+            <!-- Collections Grid -->
+            <section id="collections" class="collections-section">
+                <div class="section-header">
+                    <h2 class="section-title reveal-text">The Collections</h2>
+                    <div class="separator"></div>
+                </div>
+
+                <div class="masonry-grid">
+                    <!-- Ammu Video -->
+                    <div class="collection-item item-left" data-speed="1.15">
+                        <div class="img-container">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/Ammu_blue_dress.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="overlay">
+                                <h3>Azure Radiance</h3>
+                                <p>Flowing Elegance in Motion</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sonu Video -->
+                    <div class="collection-item item-right" data-speed="1.05">
+                        <div class="img-container">
+                            <video autoplay loop muted playsinline>
+                                <source src="assets/SonuDress1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="overlay">
+                                <h3>Royal Drape</h3>
+                                <p>Sculpted for Sovereignty</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extracted/Generated Image Gallery -->
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="assets/lehenga.png" alt="Bridal Couture">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/saree.png" alt="Silk Heritage">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/ethnic.png" alt="Detailing">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/modern.png" alt="Modern Cut">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/fusion.png" alt="Fusion Drape">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/lehenga.png" alt="Signature Look"> <!-- Duplicate for grid balance -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Custom Fit Section -->
+            <section id="custom-fit" class="custom-fit-section">
+                <div class="container fit-container">
+                    <div class="fit-content" data-speed="0.9">
+                        <h2 class="section-title">The Perfect Fit</h2>
+                        <p>We don't just tailor clothes. We sculpt them to your unique form. meticulous measurements,
+                            premium fabrics, and an obsession with detail.</p>
+                        <a href="#contact" class="btn-outline">Book Consultation</a>
+                    </div>
+                    <div class="fit-visual">
+                        <!-- Abstract shape or minimal graphic via CSS -->
+                        <div class="circle-graphic"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer/Contact -->
+            <footer id="contact" class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <h2>Aura & Attire</h2>
+                        <p>Elevating Elegance.</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="https://www.instagram.com/gousia_designer/" target="_blank">Instagram</a>
+                        <a href="#">Pinterest</a>
+                        <a href="mailto:hello@auraattire.com">hello@auraattire.com</a>
+                    </div>
+                </div>
+                <div class="copyright">
+                    &copy; 2026 Aura & Attire. All Rights Reserved.
+                </div>
+            </footer>
+
+        </div> <!-- /smooth-content -->
+    </div> <!-- /smooth-wrapper -->
+
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <!-- Lenis for smooth scrolling (alternative to ScrollSmoother for free use) -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
